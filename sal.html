@@ -86,6 +86,10 @@
             font-size: 14px;
             color: #888888;
         }
+        .divider {
+            margin: 40px 0;
+            border-top: 2px solid #ff5722;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +114,9 @@
         <div class="result" id="result"></div>
     </div>
 
+    <!-- خط فاصل بين التطبيق والاختبار -->
+    <div class="divider"></div>
+
     <!-- قسم الاختبار -->
     <div class="quiz-container">
         <h3>اختبار الأعداد الزوجية والفردية والأولية</h3>
@@ -123,8 +130,38 @@
             <input type="radio" name="q2" value="نعم"> نعم<br>
             <input type="radio" name="q2" value="لا"> لا<br>
 
-            <!-- أضف الأسئلة الأخرى بنفس النمط -->
-            <!-- ... أسئلة إضافية ... -->
+            <!-- أسئلة إضافية -->
+            <p>3. هل الرقم 7 أولي؟</p>
+            <input type="radio" name="q3" value="نعم"> نعم<br>
+            <input type="radio" name="q3" value="لا"> لا<br>
+
+            <p>4. هل الرقم 8 زوجي أم فردي؟</p>
+            <input type="radio" name="q4" value="زوجي"> زوجي<br>
+            <input type="radio" name="q4" value="فردي"> فردي<br>
+
+            <p>5. هل الرقم 9 أولي؟</p>
+            <input type="radio" name="q5" value="نعم"> نعم<br>
+            <input type="radio" name="q5" value="لا"> لا<br>
+
+            <p>6. هل الرقم 11 أولي؟</p>
+            <input type="radio" name="q6" value="نعم"> نعم<br>
+            <input type="radio" name="q6" value="لا"> لا<br>
+
+            <p>7. هل الرقم 14 زوجي أم فردي؟</p>
+            <input type="radio" name="q7" value="زوجي"> زوجي<br>
+            <input type="radio" name="q7" value="فردي"> فردي<br>
+
+            <p>8. هل الرقم 15 أولي؟</p>
+            <input type="radio" name="q8" value="نعم"> نعم<br>
+            <input type="radio" name="q8" value="لا"> لا<br>
+
+            <p>9. هل الرقم 17 أولي؟</p>
+            <input type="radio" name="q9" value="نعم"> نعم<br>
+            <input type="radio" name="q9" value="لا"> لا<br>
+
+            <p>10. هل الرقم 20 زوجي أم فردي؟</p>
+            <input type="radio" name="q10" value="زوجي"> زوجي<br>
+            <input type="radio" name="q10" value="فردي"> فردي<br>
 
             <button onclick="submitQuiz()">إرسال</button>
         </div>
@@ -177,8 +214,15 @@
             // تحقق من إجابات المستخدم
             const answers = {
                 q1: "زوجي",
-                q2: "نعم"
-                // أضف الإجابات الصحيحة لباقي الأسئلة هنا
+                q2: "نعم",
+                q3: "نعم",
+                q4: "زوجي",
+                q5: "لا",
+                q6: "نعم",
+                q7: "زوجي",
+                q8: "لا",
+                q9: "نعم",
+                q10: "زوجي"
             };
 
             for (const [question, answer] of Object.entries(answers)) {
