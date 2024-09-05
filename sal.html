@@ -143,7 +143,37 @@
             <input type="radio" name="q2" value="لا" onclick="disableCheckButton()"> لا<br>
 
             <!-- الأسئلة الإضافية -->
-            <!-- ... باقي الأسئلة ... -->
+            <p>3. هل الرقم 5 أولي؟</p>
+            <input type="radio" name="q3" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q3" value="لا" onclick="disableCheckButton()"> لا<br>
+
+            <p>4. هل الرقم 10 زوجي أم فردي؟</p>
+            <input type="radio" name="q4" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="q4" value="فردي" onclick="disableCheckButton()"> فردي<br>
+
+            <p>5. هل الرقم 7 أولي؟</p>
+            <input type="radio" name="q5" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q5" value="لا" onclick="disableCheckButton()"> لا<br>
+
+            <p>6. هل الرقم 4 أولي؟</p>
+            <input type="radio" name="q6" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q6" value="لا" onclick="disableCheckButton()"> لا<br>
+
+            <p>7. هل الرقم 6 زوجي أم فردي؟</p>
+            <input type="radio" name="q7" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="q7" value="فردي" onclick="disableCheckButton()"> فردي<br>
+
+            <p>8. هل الرقم 9 أولي؟</p>
+            <input type="radio" name="q8" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q8" value="لا" onclick="disableCheckButton()"> لا<br>
+
+            <p>9. هل الرقم 11 أولي؟</p>
+            <input type="radio" name="q9" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q9" value="لا" onclick="disableCheckButton()"> لا<br>
+
+            <p>10. هل الرقم 8 زوجي أم فردي؟</p>
+            <input type="radio" name="q10" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="q10" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
             <button onclick="submitQuiz()">إرسال</button>
         </div>
@@ -156,7 +186,7 @@
     </div>
 
     <script>
-        let quizActive = false; // متغير لتتبع حالة الاختبار
+        let quizActive = false;
 
         function isPrime(num) {
             if (num <= 1) return false;
@@ -168,7 +198,7 @@
 
         function checkNumber() {
             if (quizActive) {
-                document.getElementById('result').textContent = "يرجى الإنتهاء من الاختبار قبل النقر على زر التأكيد.";
+                document.getElementById('result').textContent = "لا يمكن التحقق من الرقم في فترة الاختبار.";
                 return;
             }
 
@@ -199,36 +229,34 @@
 
         function disableCheckButton() {
             document.getElementById('checkButton').disabled = true;
-            quizActive = true; // تمكين وضع الاختبار
+            quizActive = true;
         }
 
         function enableCheckButton() {
             document.getElementById('checkButton').disabled = false;
-            quizActive = false; // تعطيل وضع الاختبار
+            quizActive = false;
         }
 
         function submitQuiz() {
-            let correctAnswers = 0;
+            let results = [];
             const answers = {
                 q1: "زوجي",
                 q2: "نعم",
                 q3: "نعم",
                 q4: "زوجي",
-                q5: "لا",
-                q6: "نعم",
+                q5: "نعم",
+                q6: "لا",
                 q7: "زوجي",
                 q8: "لا",
                 q9: "نعم",
                 q10: "زوجي"
             };
 
-            let results = [];
             for (const [question, answer] of Object.entries(answers)) {
                 const selected = document.querySelector(`input[name="${question}"]:checked`);
                 if (selected) {
                     if (selected.value === answer) {
                         results.push(`${question}: الإجابة صحيحة`);
-                        correctAnswers++;
                     } else {
                         results.push(`${question}: الإجابة غير صحيحة`);
                     }
@@ -239,8 +267,7 @@
 
             const quizResultDiv = document.getElementById('quizResult');
             quizResultDiv.innerHTML = results.join("<br>");
-            
-            // إعادة تفعيل زر التحقق بعد إرسال الإجابات
+
             enableCheckButton();
         }
     </script>
