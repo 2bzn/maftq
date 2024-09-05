@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأعداد الزوجية والفردية والأولية</title>
+    <title>تطبيق التحقق من الأعداد</title>
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -90,9 +90,15 @@
             margin: 40px 0;
             border-top: 2px solid #ff5722;
         }
+        h1 {
+            color: #ff5722;
+        }
     </style>
 </head>
 <body>
+    <!-- عنوان القسم -->
+    <h1>الأعداد الزوجية والفردية والأولية</h1>
+    
     <!-- أزرار التنقل -->
     <div class="nav">
         <button onclick="document.getElementById('app-container').scrollIntoView({behavior: 'smooth'});">التحقق من الأعداد</button>
@@ -111,7 +117,7 @@
     <div id="app-container" class="app-container">
         <h1>تحقق من الرقم</h1>
         <input type="number" id="numberInput" placeholder="أدخل الرقم">
-        <button onclick="checkNumber()">تأكيد</button>
+        <button id="checkButton" onclick="checkNumber()">تأكيد</button>
         <div class="result" id="result"></div>
     </div>
 
@@ -124,45 +130,45 @@
         <div id="quiz">
             <!-- مثال على سؤال -->
             <p>1. هل الرقم 2 زوجي أم فردي؟</p>
-            <input type="radio" name="q1" value="زوجي"> زوجي<br>
-            <input type="radio" name="q1" value="فردي"> فردي<br>
+            <input type="radio" name="q1" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="q1" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
             <p>2. هل الرقم 3 أولي؟</p>
-            <input type="radio" name="q2" value="نعم"> نعم<br>
-            <input type="radio" name="q2" value="لا"> لا<br>
+            <input type="radio" name="q2" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q2" value="لا" onclick="disableCheckButton()"> لا<br>
 
             <!-- أسئلة إضافية -->
             <p>3. هل الرقم 7 أولي؟</p>
-            <input type="radio" name="q3" value="نعم"> نعم<br>
-            <input type="radio" name="q3" value="لا"> لا<br>
+            <input type="radio" name="q3" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q3" value="لا" onclick="disableCheckButton()"> لا<br>
 
             <p>4. هل الرقم 8 زوجي أم فردي؟</p>
-            <input type="radio" name="q4" value="زوجي"> زوجي<br>
-            <input type="radio" name="q4" value="فردي"> فردي<br>
+            <input type="radio" name="q4" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="q4" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
             <p>5. هل الرقم 9 أولي؟</p>
-            <input type="radio" name="q5" value="نعم"> نعم<br>
-            <input type="radio" name="q5" value="لا"> لا<br>
+            <input type="radio" name="q5" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q5" value="لا" onclick="disableCheckButton()"> لا<br>
 
             <p>6. هل الرقم 11 أولي؟</p>
-            <input type="radio" name="q6" value="نعم"> نعم<br>
-            <input type="radio" name="q6" value="لا"> لا<br>
+            <input type="radio" name="q6" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q6" value="لا" onclick="disableCheckButton()"> لا<br>
 
             <p>7. هل الرقم 14 زوجي أم فردي؟</p>
-            <input type="radio" name="q7" value="زوجي"> زوجي<br>
-            <input type="radio" name="q7" value="فردي"> فردي<br>
+            <input type="radio" name="q7" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="q7" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
             <p>8. هل الرقم 15 أولي؟</p>
-            <input type="radio" name="q8" value="نعم"> نعم<br>
-            <input type="radio" name="q8" value="لا"> لا<br>
+            <input type="radio" name="q8" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q8" value="لا" onclick="disableCheckButton()"> لا<br>
 
             <p>9. هل الرقم 17 أولي؟</p>
-            <input type="radio" name="q9" value="نعم"> نعم<br>
-            <input type="radio" name="q9" value="لا"> لا<br>
+            <input type="radio" name="q9" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="q9" value="لا" onclick="disableCheckButton()"> لا<br>
 
             <p>10. هل الرقم 20 زوجي أم فردي؟</p>
-            <input type="radio" name="q10" value="زوجي"> زوجي<br>
-            <input type="radio" name="q10" value="فردي"> فردي<br>
+            <input type="radio" name="q10" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="q10" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
             <button onclick="submitQuiz()">إرسال</button>
         </div>
@@ -209,6 +215,14 @@
             resultDiv.textContent = resultMessage;
         }
 
+        function disableCheckButton() {
+            document.getElementById('checkButton').disabled = true;
+        }
+
+        function enableCheckButton() {
+            document.getElementById('checkButton').disabled = false;
+        }
+
         function submitQuiz() {
             let correctAnswers = 0;
             const answers = {
@@ -241,6 +255,9 @@
 
             const quizResultDiv = document.getElementById('quizResult');
             quizResultDiv.innerHTML = results.join("<br>");
+            
+            // إعادة تفعيل زر التحقق بعد إرسال الإجابات
+            enableCheckButton();
         }
     </script>
 </body>
