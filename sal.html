@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تطبيق التحقق من الأعداد</title>
+    <title>الأعداد الزوجية والفردية والأولية</title>
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -39,7 +39,7 @@
             padding: 8px 15px;
             margin: 0 10px;
             cursor: pointer;
-            font-size: 16px; /* حجم أصغر قليلاً للأزرار */
+            font-size: 16px;
         }
         .description {
             margin: 20px auto;
@@ -89,6 +89,20 @@
         .quiz-container h3 {
             color: #ff5722;
         }
+        .quiz-container input[type="radio"] {
+            margin-right: 5px;
+            accent-color: #ff5722; /* تغيير لون أزرار الراديو */
+        }
+        .quiz-container button {
+            background-color: #ff5722; /* تغيير لون زر الإرسال */
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
         .footer {
             margin-top: 50px;
             font-size: 14px;
@@ -97,6 +111,12 @@
         .divider {
             margin: 40px 0;
             border-top: 2px solid #ff5722;
+        }
+        .correct-answer {
+            color: green; /* لون الإجابة الصحيحة */
+        }
+        .wrong-answer {
+            color: red; /* لون الإجابة الخاطئة */
         }
     </style>
 </head>
@@ -134,144 +154,132 @@
         <h3>اختبار الأعداد الزوجية والفردية والأولية</h3>
         <div id="quiz">
             <!-- أسئلة الاختبار -->
-            <p>1. هل الرقم 12 زوجي أم فردي؟</p>
-            <input type="radio" name="q1" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
-            <input type="radio" name="q1" value="فردي" onclick="disableCheckButton()"> فردي<br>
+            <p>السؤال الأول: هل الرقم 12 زوجي أم فردي؟</p>
+            <input type="radio" name="السؤال الأول" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="السؤال الأول" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
-            <p>2. هل الرقم 19 أولي؟</p>
-            <input type="radio" name="q2" value="نعم" onclick="disableCheckButton()"> نعم<br>
-            <input type="radio" name="q2" value="لا" onclick="disableCheckButton()"> لا<br>
+            <p>السؤال الثاني: هل الرقم 19 أولي؟</p>
+            <input type="radio" name="السؤال الثاني" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="السؤال الثاني" value="لا" onclick="disableCheckButton()"> لا<br>
 
-            <p>3. هل الرقم 20 زوجي؟</p>
-            <input type="radio" name="q3" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
-            <input type="radio" name="q3" value="فردي" onclick="disableCheckButton()"> فردي<br>
+            <p>السؤال الثالث: هل الرقم 20 زوجي؟</p>
+            <input type="radio" name="السؤال الثالث" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="السؤال الثالث" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
-            <p>4. هل الرقم 13 أولي؟</p>
-            <input type="radio" name="q4" value="نعم" onclick="disableCheckButton()"> نعم<br>
-            <input type="radio" name="q4" value="لا" onclick="disableCheckButton()"> لا<br>
+            <p>السؤال الرابع: هل الرقم 13 أولي؟</p>
+            <input type="radio" name="السؤال الرابع" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="السؤال الرابع" value="لا" onclick="disableCheckButton()"> لا<br>
 
-            <p>5. هل الرقم 15 زوجي أم فردي؟</p>
-            <input type="radio" name="q5" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
-            <input type="radio" name="q5" value="فردي" onclick="disableCheckButton()"> فردي<br>
+            <p>السؤال الخامس: هل الرقم 15 زوجي أم فردي؟</p>
+            <input type="radio" name="السؤال الخامس" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="السؤال الخامس" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
-            <p>6. هل الرقم 17 أولي؟</p>
-            <input type="radio" name="q6" value="نعم" onclick="disableCheckButton()"> نعم<br>
-            <input type="radio" name="q6" value="لا" onclick="disableCheckButton()"> لا<br>
+            <p>السؤال السادس: هل الرقم 17 أولي؟</p>
+            <input type="radio" name="السؤال السادس" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="السؤال السادس" value="لا" onclick="disableCheckButton()"> لا<br>
 
-            <p>7. هل الرقم 22 زوجي؟</p>
-            <input type="radio" name="q7" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
-            <input type="radio" name="q7" value="فردي" onclick="disableCheckButton()"> فردي<br>
+            <p>السؤال السابع: هل الرقم 22 زوجي؟</p>
+            <input type="radio" name="السؤال السابع" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="السؤال السابع" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
-            <p>8. هل الرقم 21 فردي؟</p>
-            <input type="radio" name="q8" value="نعم" onclick="disableCheckButton()"> نعم<br>
-            <input type="radio" name="q8" value="لا" onclick="disableCheckButton()"> لا<br>
+            <p>السؤال الثامن: هل الرقم 21 فردي؟</p>
+            <input type="radio" name="السؤال الثامن" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="السؤال الثامن" value="لا" onclick="disableCheckButton()"> لا<br>
 
-            <p>9. هل الرقم 29 أولي؟</p>
-            <input type="radio" name="q9" value="نعم" onclick="disableCheckButton()"> نعم<br>
-            <input type="radio" name="q9" value="لا" onclick="disableCheckButton()"> لا<br>
+            <!-- السؤالين الجديدين -->
+            <p>السؤال التاسع: هل الرقم 9 عدد أولي؟</p>
+            <input type="radio" name="السؤال التاسع" value="نعم" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="السؤال التاسع" value="لا" onclick="disableCheckButton()"> لا<br>
 
-            <p>10. هل الرقم 24 زوجي؟</p>
-            <input type="radio" name="q10" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
-            <input type="radio" name="q10" value="فردي" onclick="disableCheckButton()"> فردي<br>
+            <p>السؤال العاشر: الرقم 200001 زوجي أم فردي؟</p>
+            <input type="radio" name="السؤال العاشر" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
+            <input type="radio" name="السؤال العاشر" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
-            <button onclick="submitQuiz()">إرسال</button>
+            <!-- زر التحقق من الإجابات -->
+            <button onclick="checkAnswers()">إرسال الإجابات</button>
         </div>
-        <div class="result" id="quizResult"></div>
+        <div id="resultQuiz"></div>
     </div>
 
-    <!-- لمسة شخصية -->
+    <!-- حقوق النشر -->
     <div class="footer">
-        Abdulaziz bin Rashed bin Helal • عبدالعزيز بن راشد بن هلال
-                             شعبة رقم 204
+         Abdulaziz bin Rashed bin Helal • عبدالعزيز بن راشد بن هلال شعبة رقم 204</p>
     </div>
 
+    <!-- سكربت التحقق من الأعداد والاختبار -->
     <script>
-        let quizActive = false;
+        function checkNumber() {
+            const number = parseInt(document.getElementById('numberInput').value);
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(number)) {
+                resultDiv.textContent = "يرجى إدخال رقم صحيح.";
+                return;
+            }
+
+            let result = "";
+            if (number % 2 === 0) {
+                result += "الرقم " + number + " زوجي.";
+            } else {
+                result += "الرقم " + number + " فردي.";
+            }
+
+            // التحقق من إذا كان الرقم أولي
+            if (number > 1 && isPrime(number)) {
+                result += " وهو أيضًا عدد أولي لأنه لا يقبل القسمة إلا على 1 ونفسه .";
+            } else if (number > 1) {
+                result += "  وهو ليس عددًا أوليًا لأنه يقبل القسمة على أرقام أخرى.";
+            }
+            resultDiv.textContent = result;
+        }
 
         function isPrime(num) {
             if (num <= 1) return false;
-            for (let i = 2; i <= Math.sqrt(num); i++) {
+            for (let i = 2; i < num; i++) {
                 if (num % i === 0) return false;
             }
             return true;
         }
 
-        function checkNumber() {
-            if (quizActive) {
-                document.getElementById('result').textContent = "لا يمكن التحقق من الرقم في فترة الاختبار.";
-                return;
-            }
-
-            const number = parseInt(document.getElementById('numberInput').value);
-            const resultDiv = document.getElementById('result');
-
-            if (isNaN(number)) {
-                resultDiv.textContent = "يرجى إدخال رقم صالح.";
-                return;
-            }
-
-            let resultMessage = `الرقم ${number} هو `;
-            
-            if (number % 2 === 0) {
-                resultMessage += "زوجي.";
-            } else {
-                resultMessage += "فردي.";
-            }
-
-            if (isPrime(number)) {
-                resultMessage += " وأولي لأنه لا يقبل القسمة إلا على 1 ونفسه.";
-            } else {
-                resultMessage += " وليس أوليًا لأنه يقبل القسمة على أرقام أخرى.";
-            }
-
-            resultDiv.textContent = resultMessage;
-        }
-
-        function disableCheckButton() {
-            document.getElementById('checkButton').disabled = true;
-            quizActive = true;
-        }
-
-        function enableCheckButton() {
-            document.getElementById('checkButton').disabled = false;
-            quizActive = false;
-        }
-
-        function submitQuiz() {
-            let results = [];
+        function checkAnswers() {
             const answers = {
-                q1: "زوجي",
-                q2: "نعم",
-                q3: "زوجي",
-                q4: "نعم",
-                q5: "فردي",
-                q6: "نعم",
-                q7: "زوجي",
-                q8: "نعم",
-                q9: "نعم",
-                q10: "زوجي"
+                "السؤال الأول": "زوجي",
+                "السؤال الثاني": "نعم",
+                "السؤال الثالث": "زوجي",
+                "السؤال الرابع": "نعم",
+                "السؤال الخامس": "فردي",
+                "السؤال السادس": "نعم",
+                "السؤال السابع": "زوجي",
+                "السؤال الثامن": "نعم",
+                "السؤال التاسع": "لا",
+                "السؤال العاشر": "فردي"
             };
 
-            for (const [question, answer] of Object.entries(answers)) {
-                const selected = document.querySelector(`input[name="${question}"]:checked`);
+            let resultHTML = "";
+            let allCorrect = true;
+
+            for (let key in answers) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
                 if (selected) {
-                    if (selected.value === answer) {
-                        results.push(`${question}: الإجابة صحيحة`);
+                    if (selected.value === answers[key]) {
+                        resultHTML += `<p class="correct-answer">إجابة ${key} صحيحة.</p>`;
                     } else {
-                        results.push(`${question}: الإجابة غير صحيحة`);
+                        resultHTML += `<p class="wrong-answer">إجابة ${key} خاطئة. الإجابة الصحيحة هي: ${answers[key]}.</p>`;
+                        allCorrect = false;
                     }
                 } else {
-                    results.push(`${question}: لم يتم اختيار إجابة`);
+                    resultHTML += `<p class="wrong-answer">لم تقم بالإجابة على ${key}.</p>`;
+                    allCorrect = false;
                 }
             }
 
-            const quizResultDiv = document.getElementById('quizResult');
-            quizResultDiv.innerHTML = results.join("<br>");
+            document.getElementById('resultQuiz').innerHTML = resultHTML;
+            document.getElementById('checkButton').disabled = false; // إعادة تفعيل الزر
+        }
 
-            enableCheckButton();
+        function disableCheckButton() {
+            document.getElementById('checkButton').disabled = true; // تعطيل زر التحقق من الرقم
         }
     </script>
 </body>
 </html>
-
-
