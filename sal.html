@@ -155,46 +155,46 @@
         <h3>اختبار الأعداد الزوجية والفردية والأولية</h3>
         <div id="quiz">
             <!-- أسئلة الاختبار -->
-            <p>السؤال الأول: هل الرقم 12 زوجي أم فردي؟</p>
+            <p>1. الرقم 23354 زوجي أم فردي؟</p>
             <input type="radio" name="السؤال الأول" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
             <input type="radio" name="السؤال الأول" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
-            <p>السؤال الثاني: هل الرقم 19 أولي؟</p>
+            <p>2. هل الرقم 19 أولي؟</p>
             <input type="radio" name="السؤال الثاني" value="نعم" onclick="disableCheckButton()"> نعم<br>
             <input type="radio" name="السؤال الثاني" value="لا" onclick="disableCheckButton()"> لا<br>
 
-            <p>السؤال الثالث: هل الرقم 20 زوجي؟</p>
+            <p>3. هل الرقم 20 زوجي أم فردي؟</p>
             <input type="radio" name="السؤال الثالث" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
             <input type="radio" name="السؤال الثالث" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
-            <p> 1. هل الرقم 13 أولي؟</p>
+            <p>4. هل الرقم 13 زوجي؟</p>
             <input type="radio" name="السؤال الرابع" value="نعم" onclick="disableCheckButton()">نعم<br>
             <input type="radio" name="السؤال الرابع" value="لا" onclick="disableCheckButton()">لا<br>
 
-            <p>السؤال الخامس: هل الرقم 15 زوجي أم فردي؟</p>
-            <input type="radio" name="السؤال الخامس" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
-            <input type="radio" name="السؤال الخامس" value="فردي" onclick="disableCheckButton()"> فردي<br>
+            <p>5. الرقم 23354 فردي؟</p>
+            <input type="radio" name="السؤال الخامس" value="زوجي" onclick="disableCheckButton()"> نعم<br>
+            <input type="radio" name="السؤال الخامس" value="فردي" onclick="disableCheckButton()"> لا<br>
 
-            <p>السؤال السادس: هل الرقم 17 أولي؟</p>
-            <input type="radio" name="السؤال السادس" value="نعم" onclick="disableCheckButton()"> نعم<br>
-            <input type="radio" name="السؤال السادس" value="لا" onclick="disableCheckButton()"> لا<br>
+            <p>6. هل الرقم 17 زوجي أم أولي؟</p>
+            <input type="radio" name="السؤال السادس" value="نعم" onclick="disableCheckButton()"> أولي<br>
+            <input type="radio" name="السؤال السادس" value="لا" onclick="disableCheckButton()"> زوجي<br>
 
-            <p>السؤال السابع: هل الرقم 22 زوجي؟</p>
+            <p>7. هل الرقم 22 زوجي؟</p>
             <input type="radio" name="السؤال السابع" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
             <input type="radio" name="السؤال السابع" value="فردي" onclick="disableCheckButton()"> فردي<br>
 
-            <p>السؤال الثامن: هل الرقم 21 فردي؟</p>
+            <p>8. هل الرقم 21 فردي؟</p>
             <input type="radio" name="السؤال الثامن" value="نعم" onclick="disableCheckButton()"> نعم<br>
             <input type="radio" name="السؤال الثامن" value="لا" onclick="disableCheckButton()"> لا<br>
 
             <!-- السؤالين الجديدين -->
-            <p>السؤال التاسع: هل الرقم 9 عدد أولي؟</p>
+            <p>9. هل الرقم 9 عدد أولي؟</p>
             <input type="radio" name="السؤال التاسع" value="نعم" onclick="disableCheckButton()"> نعم<br>
             <input type="radio" name="السؤال التاسع" value="لا" onclick="disableCheckButton()"> لا<br>
 
-            <p>السؤال العاشر: الرقم 200001 زوجي أم فردي؟</p>
-            <input type="radio" name="السؤال العاشر" value="زوجي" onclick="disableCheckButton()"> زوجي<br>
-            <input type="radio" name="السؤال العاشر" value="فردي" onclick="disableCheckButton()"> فردي<br>
+            <p>10. الرقم 200001 زوجي؟</p>
+            <input type="radio" name="السؤال العاشر" value="زوجي" onclick="disableCheckButton()"> تعم<br>
+            <input type="radio" name="السؤال العاشر" value="فردي" onclick="disableCheckButton()"> لا<br>
 
             <!-- زر التحقق من الإجابات -->
             <button onclick="checkAnswers()">إرسال الإجابات</button>
@@ -247,13 +247,13 @@
                 "السؤال الأول": "زوجي",
                 "السؤال الثاني": "نعم",
                 "السؤال الثالث": "زوجي",
-                "السؤال الرابع": "نعم",
-                "السؤال الخامس": "فردي",
-                "السؤال السادس": "نعم",
+                "السؤال الرابع": "لا",
+                "السؤال الخامس": "لا",
+                "السؤال السادس": "أولي",
                 "السؤال السابع": "زوجي",
                 "السؤال الثامن": "نعم",
                 "السؤال التاسع": "لا",
-                "السؤال العاشر": "فردي"
+                "السؤال العاشر": "لا"
             };
 
             let resultHTML = "";
