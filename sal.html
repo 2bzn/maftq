@@ -97,6 +97,7 @@
     <div class="nav">
         <button onclick="document.getElementById('app-container').scrollIntoView({behavior: 'smooth'});">التحقق من الأعداد</button>
         <button onclick="document.getElementById('description').scrollIntoView({behavior: 'smooth'});">تعريف الأعداد الزوجية والفردية والأولية</button>
+        <button onclick="document.getElementById('quiz-container').scrollIntoView({behavior: 'smooth'});">اختبار</button>
     </div>
 
     <!-- وصف الأعداد -->
@@ -108,7 +109,7 @@
 
     <!-- قسم التحقق من الأعداد -->
     <div id="app-container" class="app-container">
-      <h1>تحقق من الرقم</h1>
+        <h1>تحقق من الرقم</h1>
         <input type="number" id="numberInput" placeholder="أدخل الرقم">
         <button onclick="checkNumber()">تأكيد</button>
         <div class="result" id="result"></div>
@@ -118,7 +119,7 @@
     <div class="divider"></div>
 
     <!-- قسم الاختبار -->
-    <div class="quiz-container">
+    <div id="quiz-container" class="quiz-container">
         <h3>اختبار الأعداد الزوجية والفردية والأولية</h3>
         <div id="quiz">
             <!-- مثال على سؤال -->
@@ -210,8 +211,6 @@
 
         function submitQuiz() {
             let correctAnswers = 0;
-
-            // تحقق من إجابات المستخدم
             const answers = {
                 q1: "زوجي",
                 q2: "نعم",
@@ -225,15 +224,23 @@
                 q10: "زوجي"
             };
 
+            let results = [];
             for (const [question, answer] of Object.entries(answers)) {
                 const selected = document.querySelector(`input[name="${question}"]:checked`);
-                if (selected && selected.value === answer) {
-                    correctAnswers++;
+                if (selected) {
+                    if (selected.value === answer) {
+                        results.push(`${question}: الإجابة صحيحة`);
+                        correctAnswers++;
+                    } else {
+                        results.push(`${question}: الإجابة غير صحيحة`);
+                    }
+                } else {
+                    results.push(`${question}: لم يتم اختيار إجابة`);
                 }
             }
 
             const quizResultDiv = document.getElementById('quizResult');
-            quizResultDiv.textContent = `لقد أجبت بشكل صحيح على ${correctAnswers} من 10 أسئلة.`;
+            quizResultDiv.innerHTML = results.join("<br>");
         }
     </script>
 </body>
