@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق التحقق من الأعداد</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            margin: 0;
+            background-color: #121212; /* خلفية سوداء داكنة */
+            color: #ffffff; /* لون النص أبيض */
+        }
+        .header {
+            background-color: #1f1f1f; /* لون غامق للشريط العلوي */
+            padding: 20px;
+            font-size: 24px;
+            color: #ff5722; /* لون مميز للشريط */
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .nav button {
+            background-color: #ff5722;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 16px; /* حجم أصغر قليلاً للأزرار */
+        }
+        .description {
+            margin: 20px auto;
+            width: 80%;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ff5722;
+        }
+        .app-container {
+            margin-top: 30px;
+        }
+        input { 
+            padding: 10px; 
+            margin-top: 20px; 
+            width: 200px;
+            border: 2px solid #ff5722;
+            border-radius: 5px;
+            background-color: #1f1f1f;
+            color: #ffffff;
+        }
+        button { 
+            padding: 10px 20px; 
+            margin-top: 20px; 
+            background-color: #ff5722; 
+            color: #ffffff; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px;
+        }
+        .result { 
+            margin-top: 30px; 
+            font-weight: bold; 
+            color: #ff5722; 
+        }
+        .quiz-container {
+            margin: 30px auto;
+            width: 80%;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #ff5722;
+            border-radius: 5px;
+            background-color: #1f1f1f;
+        }
+        .quiz-container h3 {
+            color: #ff5722;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+    <!-- أزرار التنقل -->
+    <div class="nav">
+        <button onclick="document.getElementById('app-container').scrollIntoView({behavior: 'smooth'});">التحقق من الأعداد</button>
+        <button onclick="document.getElementById('description').scrollIntoView({behavior: 'smooth'});">تعريف الأعداد الزوجية والفردية والأولية</button>
+    </div>
+
+    <!-- وصف الأعداد -->
+    <div id="description" class="description">
+        <p>الأعداد الزوجية هي الأعداد التي تقبل القسمة على 2 بدون باقي، مثل 2، 4، 6...</p>
+        <p>الأعداد الفردية هي الأعداد التي لا تقبل القسمة على 2 وتترك باقيًا، مثل 1، 3، 5...</p>
+        <p>الأعداد الأولية هي الأعداد التي تقبل القسمة على نفسها وعلى 1 فقط، مثل 2، 3، 5، 7...</p>
+    </div>
+
+    <!-- قسم التحقق من الأعداد -->
+    <div id="app-container" class="app-container">
+      <h1>تحقق من الرقم</h1>
+        <input type="number" id="numberInput" placeholder="أدخل الرقم">
+        <button onclick="checkNumber()">تأكيد</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <!-- قسم الاختبار -->
+    <div class="quiz-container">
+        <h3>اختبار الأعداد الزوجية والفردية والأولية</h3>
+        <div id="quiz">
+            <!-- مثال على سؤال -->
+            <p>1. هل الرقم 2 زوجي أم فردي؟</p>
+            <input type="radio" name="q1" value="زوجي"> زوجي<br>
+            <input type="radio" name="q1" value="فردي"> فردي<br>
+
+            <p>2. هل الرقم 3 أولي؟</p>
+            <input type="radio" name="q2" value="نعم"> نعم<br>
+            <input type="radio" name="q2" value="لا"> لا<br>
+
+            <!-- أضف الأسئلة الأخرى بنفس النمط -->
+            <!-- ... أسئلة إضافية ... -->
+
+            <button onclick="submitQuiz()">إرسال</button>
+        </div>
+        <div class="result" id="quizResult"></div>
+    </div>
+
+    <!-- لمسة شخصية -->
+    <div class="footer">
+        Abdulaziz bin Helal • عبدالعزيز بن راشد بن هلال
+    </div>
+
+    <script>
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function checkNumber() {
+            const number = parseInt(document.getElementById('numberInput').value);
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(number)) {
+                resultDiv.textContent = "يرجى إدخال رقم صالح.";
+                return;
+            }
+
+            let resultMessage = `الرقم ${number} هو `;
+            
+            if (number % 2 === 0) {
+                resultMessage += "زوجي.";
+            } else {
+                resultMessage += "فردي.";
+            }
+
+            if (isPrime(number)) {
+                resultMessage += " وأولي لأنه لا يقبل القسمة إلا على 1 ونفسه.";
+            } else {
+                resultMessage += " وليس أوليًا لأنه يقبل القسمة على أرقام أخرى.";
+            }
+
+            resultDiv.textContent = resultMessage;
+        }
+
+        function submitQuiz() {
+            let correctAnswers = 0;
+
+            // تحقق من إجابات المستخدم
+            const answers = {
+                q1: "زوجي",
+                q2: "نعم"
+                // أضف الإجابات الصحيحة لباقي الأسئلة هنا
+            };
+
+            for (const [question, answer] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answer) {
+                    correctAnswers++;
+                }
+            }
+
+            const quizResultDiv = document.getElementById('quizResult');
+            quizResultDiv.textContent = `لقد أجبت بشكل صحيح على ${correctAnswers} من 10 أسئلة.`;
+        }
+    </script>
+</body>
+</html>
