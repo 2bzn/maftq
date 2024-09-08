@@ -263,13 +263,13 @@
                 const selected = document.querySelector(`input[name="${key}"]:checked`);
                 if (selected) {
                     if (selected.value === answers[key]) {
-                        resultHTML += `<p class="correct-answer">إجابة ${key} صحيحة.</p>`;
+                        resultHTML += `<p class="correct-answer">إجابة ${key} صحيحة!</p>`;
                     } else {
                         resultHTML += `<p class="wrong-answer">إجابة ${key} خاطئة. الإجابة الصحيحة هي: ${answers[key]}.</p>`;
                         allCorrect = false;
                     }
                 } else {
-                    resultHTML += `<p class="wrong-answer">لم تقم بالإجابة على ${key}.</p>`;
+                    resultHTML += `<p class="wrong-answer">لم تقم بالإجابة على ${key}!</p>`;
                     allCorrect = false;
                 }
             }
